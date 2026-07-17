@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nail Art Studio - Manicure Profissional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== RESET E BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: #fcf9f5;
+            color: #3d2c2a;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: #fff5f0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 12px 0;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #b56a5c;
+        }
+        .logo i {
+            color: #d48b7a;
+            margin-right: 6px;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .nav-menu a {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #4d3a36;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
+        }
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #b56a5c;
+            border-bottom-color: #d48b7a;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 1.6rem;
+            background: none;
+            border: none;
+            color: #4d3a36;
+            cursor: pointer;
+        }
+
+        /* ===== PÁGINA ===== */
+        .page {
+            padding-top: 100px;
+            min-height: 80vh;
+        }
+
+        /* ===== HOME ===== */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding: 30px 0 60px;
+        }
+        .hero-content {
+            flex: 1 1 400px;
+        }
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            color: #4d2e28;
+            line-height: 1.2;
+        }
+        .hero-content h1 span {
+            color: #b56a5c;
+        }
+        .hero-content p {
+            font-size: 1.15rem;
+            margin: 20px 0 30px;
+            color: #5f4842;
+        }
+        .btn {
+            display: inline-block;
+            background: #d48b7a;
+            color: #fff;
+            padding: 14px 38px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(212, 139, 122, 0.4);
+        }
+        .btn:hover {
+            background: #b56a5c;
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: #b56a5c;
+            border: 2px solid #d48b7a;
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background: #d48b7a;
+            color: #fff;
+        }
+        .hero-image {
+            flex: 1 1 350px;
+            text-align: center;
+        }
+        .hero-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #f5e3dc, #e8cec4);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #b56a5c;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .diferenciais {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            padding: 40px 0 60px;
+            text-align: center;
+        }
+        .diferencial-item {
+            background: #fff;
+            padding: 30px 20px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+            transition: 0.3s;
+        }
+        .diferencial-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+        .diferencial-item i {
+            font-size: 2.8rem;
+            color: #d48b7a;
+            margin-bottom: 15px;
+        }
+        .diferencial-item h3 {
+            font-size: 1.2rem;
+            color: #4d2e28;
+            margin-bottom: 8px;
+        }
+        .diferencial-item p {
+            font-size: 0.95rem;
+            color: #7a625c;
+        }
+
+        /* ===== RODAPÉ ===== */
+        footer {
+            background: #fff5f0;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+            border-top: 1px solid #f0e3dd;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .footer-grid h4 {
+            font-family: 'Playfair Display', serif;
+            color: #4d2e28;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+        .footer-grid p,
+        .footer-grid a {
+            color: #7a625c;
+            font-size: 0.95rem;
+            line-height: 2;
+        }
+        .footer-grid a:hover {
+            color: #b56a5c;
+        }
+        .footer-social a {
+            display: inline-block;
+            margin-right: 14px;
+            font-size: 1.4rem;
+            color: #b56a5c;
+            transition: 0.3s;
+        }
+        .footer-social a:hover {
+            color: #8f4f3f;
+            transform: scale(1.1);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #e8d8d0;
+            color: #9a827a;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 850px) {
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 12px;
+                padding: 20px 0 10px;
+            }
+            .nav-menu.open {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.4rem;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .btn {
+                padding: 12px 28px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="logo"><i class="fas fa-spa"></i> Nail Art Studio</div>
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="active">Início</a>
+                <a href="servicos.html">Serviços</a>
+                <a href="portfolio.html">Portfólio</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="depoimentos.html">Depoimentos</a>
+                <a href="blog.html">Novidades</a>
+                <a href="contato.html">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PÁGINA INICIAL -->
+    <section class="page">
+        <div class="container">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Beleza e cuidado <br /><span>para suas mãos</span></h1>
+                    <p>Especialista em unhas decoradas, alongamento e tratamentos. Transforme suas unhas com arte e qualidade profissional.</p>
+                    <a href="contato.html" class="btn">Agende seu horário</a>
+                    <a href="portfolio.html" class="btn btn-outline" style="margin-left:10px;">Ver trabalhos</a>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-placeholder"><i class="fas fa-hand-sparkles"></i></div>
+                </div>
+            </div>
+
+            <div class="diferenciais">
+                <div class="diferencial-item">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Arte exclusiva</h3>
+                    <p>Designs personalizados para cada cliente.</p>
+                </div>
+                <div class="diferencial-item">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Produtos de qualidade</h3>
+                    <p>Materiais hipoalergênicos e duráveis.</p>
+                </div>
+                <div class="diferencial-item">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Atendimento acolhedor</h3>
+                    <p>Ambiente relaxante e cuidado total.</p>
+                </div>
+                <div class="diferencial-item">
+                    <i class="fas fa-clock"></i>
+                    <h3>Horário flexível</h3>
+                    <p>Atendimento por agendamento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>Nail Art Studio</h4>
+                    <p>Beleza e arte para suas mãos com profissionalismo e carinho.</p>
+                </div>
+                <div>
+                    <h4>Navegação</h4>
+                    <a href="index.html">Início</a><br />
+                    <a href="servicos.html">Serviços</a><br />
+                    <a href="portfolio.html">Portfólio</a><br />
+                    <a href="contato.html">Contato</a>
+                </div>
+                <div>
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-phone-alt"></i> (11) 99999-9999</p>
+                    <p><i class="fas fa-envelope"></i> contato@nailartstudio.com</p>
+                </div>
+                <div>
+                    <h4>Redes Sociais</h4>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2025 Nail Art Studio - Todos os direitos reservados.</div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('open');
+        });
+        // Marca link ativo
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            if (link.href === window.location.href) link.classList.add('active');
+        });
+    </script>
+</body>
+</html>
