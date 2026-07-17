@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfólio - Nail Art Studio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* Mesmo CSS base, com ajustes para portfolio */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: #fcf9f5;
+            color: #3d2c2a;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: #fff5f0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 12px 0;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #b56a5c;
+        }
+        .logo i {
+            color: #d48b7a;
+            margin-right: 6px;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .nav-menu a {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #4d3a36;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
+        }
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #b56a5c;
+            border-bottom-color: #d48b7a;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 1.6rem;
+            background: none;
+            border: none;
+            color: #4d3a36;
+            cursor: pointer;
+        }
+        .page {
+            padding-top: 100px;
+            min-height: 80vh;
+        }
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            color: #4d2e28;
+            margin-bottom: 10px;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #7a625c;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+        .portfolio-item {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+            transition: 0.3s;
+            background: #fff;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #d48b7a;
+            background: linear-gradient(135deg, #faf0eb, #f5e3dc);
+            cursor: default;
+        }
+        .portfolio-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+        .portfolio-item span {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #4d2e28;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 6px 16px;
+            border-radius: 30px;
+            backdrop-filter: blur(4px);
+        }
+        footer {
+            background: #fff5f0;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+            border-top: 1px solid #f0e3dd;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .footer-grid h4 {
+            font-family: 'Playfair Display', serif;
+            color: #4d2e28;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+        .footer-grid p,
+        .footer-grid a {
+            color: #7a625c;
+            font-size: 0.95rem;
+            line-height: 2;
+        }
+        .footer-grid a:hover {
+            color: #b56a5c;
+        }
+        .footer-social a {
+            display: inline-block;
+            margin-right: 14px;
+            font-size: 1.4rem;
+            color: #b56a5c;
+            transition: 0.3s;
+        }
+        .footer-social a:hover {
+            color: #8f4f3f;
+            transform: scale(1.1);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #e8d8d0;
+            color: #9a827a;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 850px) {
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 12px;
+                padding: 20px 0 10px;
+            }
+            .nav-menu.open {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+        }
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.4rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo"><i class="fas fa-spa"></i> Nail Art Studio</div>
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html">Início</a>
+                <a href="servicos.html">Serviços</a>
+                <a href="portfolio.html" class="active">Portfólio</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="depoimentos.html">Depoimentos</a>
+                <a href="blog.html">Novidades</a>
+                <a href="contato.html">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page">
+        <div class="container">
+            <h2 class="section-title">Portfólio</h2>
+            <p class="section-subtitle">Alguns dos nossos trabalhos mais recentes</p>
+            <div class="portfolio-grid">
+                <div class="portfolio-item"><span>🌸</span></div>
+                <div class="portfolio-item"><span>✨</span></div>
+                <div class="portfolio-item"><span>🌺</span></div>
+                <div class="portfolio-item"><span>💎</span></div>
+                <div class="portfolio-item"><span>🌈</span></div>
+                <div class="portfolio-item"><span>🦋</span></div>
+                <div class="portfolio-item"><span>🌿</span></div>
+                <div class="portfolio-item"><span>🌟</span></div>
+                <div class="portfolio-item"><span>🎨</span></div>
+                <div class="portfolio-item"><span>💅</span></div>
+                <div class="portfolio-item"><span>🌊</span></div>
+                <div class="portfolio-item"><span>🔥</span></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>Nail Art Studio</h4>
+                    <p>Beleza e arte para suas mãos com profissionalismo e carinho.</p>
+                </div>
+                <div>
+                    <h4>Navegação</h4>
+                    <a href="index.html">Início</a><br />
+                    <a href="servicos.html">Serviços</a><br />
+                    <a href="portfolio.html">Portfólio</a><br />
+                    <a href="contato.html">Contato</a>
+                </div>
+                <div>
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-phone-alt"></i> (11) 99999-9999</p>
+                    <p><i class="fas fa-envelope"></i> contato@nailartstudio.com</p>
+                </div>
+                <div>
+                    <h4>Redes Sociais</h4>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2025 Nail Art Studio - Todos os direitos reservados.</div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('open');
+        });
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            if (link.href === window.location.href) link.classList.add('active');
+        });
+    </script>
+</body>
+</html>
