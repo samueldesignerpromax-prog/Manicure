@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contato - Nail Art Studio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* Mesmo CSS base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: #fcf9f5;
+            color: #3d2c2a;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: #fff5f0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 12px 0;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #b56a5c;
+        }
+        .logo i {
+            color: #d48b7a;
+            margin-right: 6px;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .nav-menu a {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #4d3a36;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
+        }
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #b56a5c;
+            border-bottom-color: #d48b7a;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 1.6rem;
+            background: none;
+            border: none;
+            color: #4d3a36;
+            cursor: pointer;
+        }
+        .page {
+            padding-top: 100px;
+            min-height: 80vh;
+        }
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            color: #4d2e28;
+            margin-bottom: 10px;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #7a625c;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+        .contato-wrapper {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .contato-info {
+            flex: 1 1 280px;
+        }
+        .contato-info h3 {
+            font-size: 1.5rem;
+            color: #4d2e28;
+            margin-bottom: 20px;
+        }
+        .contato-info p {
+            margin-bottom: 12px;
+            color: #5f4842;
+        }
+        .contato-info i {
+            width: 28px;
+            color: #d48b7a;
+        }
+        .contato-form {
+            flex: 2 1 400px;
+        }
+        .contato-form input,
+        .contato-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #e0d4ce;
+            border-radius: 14px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            background: #fff;
+            margin-bottom: 16px;
+            transition: 0.3s;
+        }
+        .contato-form input:focus,
+        .contato-form textarea:focus {
+            border-color: #d48b7a;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(212, 139, 122, 0.15);
+        }
+        .contato-form textarea {
+            height: 140px;
+            resize: vertical;
+        }
+        .btn {
+            display: inline-block;
+            background: #d48b7a;
+            color: #fff;
+            padding: 14px 38px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(212, 139, 122, 0.4);
+        }
+        .btn:hover {
+            background: #b56a5c;
+            transform: translateY(-3px);
+        }
+        .footer-social a {
+            display: inline-block;
+            margin-right: 14px;
+            font-size: 1.4rem;
+            color: #b56a5c;
+            transition: 0.3s;
+        }
+        .footer-social a:hover {
+            color: #8f4f3f;
+            transform: scale(1.1);
+        }
+        footer {
+            background: #fff5f0;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+            border-top: 1px solid #f0e3dd;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .footer-grid h4 {
+            font-family: 'Playfair Display', serif;
+            color: #4d2e28;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+        .footer-grid p,
+        .footer-grid a {
+            color: #7a625c;
+            font-size: 0.95rem;
+            line-height: 2;
+        }
+        .footer-grid a:hover {
+            color: #b56a5c;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #e8d8d0;
+            color: #9a827a;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 850px) {
+            .nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 12px;
+                padding: 20px 0 10px;
+            }
+            .nav-menu.open {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+        }
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.4rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo"><i class="fas fa-spa"></i> Nail Art Studio</div>
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html">Início</a>
+                <a href="servicos.html">Serviços</a>
+                <a href="portfolio.html">Portfólio</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="depoimentos.html">Depoimentos</a>
+                <a href="blog.html">Novidades</a>
+                <a href="contato.html" class="active">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page">
+        <div class="container">
+            <h2 class="section-title">Entre em contato</h2>
+            <p class="section-subtitle">Agende seu horário ou tire suas dúvidas</p>
+            <div class="contato-wrapper">
+                <div class="contato-info">
+                    <h3><i class="fas fa-map-pin" style="color:#d48b7a;"></i> Nail Art Studio</h3>
+                    <p><i class="fas fa-phone-alt"></i> (11) 99999-9999</p>
+                    <p><i class="fas fa-envelope"></i> contato@nailartstudio.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Rua das Flores, 123 - São Paulo, SP</p>
+                    <p><i class="fas fa-clock"></i> Seg-Sex: 09h - 20h | Sáb: 09h - 18h</p>
+                    <div class="footer-social" style="margin-top:20px;">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="contato-form">
+                    <form id="contatoForm">
+                        <input type="text" placeholder="Seu nome" required />
+                        <input type="email" placeholder="Seu e-mail" required />
+                        <input type="tel" placeholder="Seu telefone" />
+                        <textarea placeholder="Mensagem ou dúvida..."></textarea>
+                        <button type="submit" class="btn">Enviar mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>Nail Art Studio</h4>
+                    <p>Beleza e arte para suas mãos com profissionalismo e carinho.</p>
+                </div>
+                <div>
+                    <h4>Navegação</h4>
+                    <a href="index.html">Início</a><br />
+                    <a href="servicos.html">Serviços</a><br />
+                    <a href="portfolio.html">Portfólio</a><br />
+                    <a href="contato.html">Contato</a>
+                </div>
+                <div>
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-phone-alt"></i> (11) 99999-9999</p>
+                    <p><i class="fas fa-envelope"></i> contato@nailartstudio.com</p>
+                </div>
+                <div>
+                    <h4>Redes Sociais</h4>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2025 Nail Art Studio - Todos os direitos reservados.</div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('open');
+        });
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            if (link.href === window.location.href) link.classList.add('active');
+        });
+
+        document.getElementById('contatoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Mensagem enviada! Entraremos em contato em breve.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
